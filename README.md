@@ -1,15 +1,15 @@
 # BPMService
 Connector para ejecutar comandos en JBPM6 de manera remota
 
--- Compilación
+## Compilación
 
 mvn clean package
 
--- Ejecución
+## Ejecución
 
 mvn exec:java
 
-(OPCIONAL)
+### OPCIONAL
 
 En caso de querer indicar otro servidor remoto que no es el default, el comando debería ser:
 
