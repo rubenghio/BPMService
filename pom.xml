@@ -4,16 +4,33 @@
 	<groupId>ar.gob.mecon</groupId>
 	<artifactId>BPMService</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	
 	<properties>
 		<maven.compiler.source>1.7</maven.compiler.source>
 		<maven.compiler.target>1.7</maven.compiler.target>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<drools.version>6.2.0.Final-redhat-6</drools.version>
 		<json.version>1.9.9.redhat-4</json.version>
-		<jboss.bom.version>6.4.0.GA</jboss.bom.version>
-		<commons.io.version>1.3.2</commons.io.version>
-		<war.plugin.version>2.6</war.plugin.version>
+		<bpm.host>localhost</bpm.host>
+		<bpm.port>8080</bpm.port>
+		<bpm.deploymentId>ar.gob.mecon:ProcesosPruebas:1.8</bpm.deploymentId>
+		<bpm.username>bpmsAdmin</bpm.username>
+		<bpm.password>Redhat01.</bpm.password>
 	</properties>
+
+	<repositories>
+		<repository>
+			<id>maven-redhat-ga</id>
+			<name>Red Hat General Availability Repository</name>
+			<url>http://maven.repository.redhat.com/ga/</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+		</repository>
+	</repositories>
 
 	<dependencies>
 		<dependency>
@@ -50,8 +67,33 @@
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>
-	
+
 	<build>
 		<finalName>${project.artifactId}</finalName>
+
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<version>1.2.1</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>java</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<mainClass>ar.gob.mecon.commons.BPMConnector</mainClass>
+					<arguments>
+						<argument>${bpm.host}</argument>
+						<argument>${bpm.port}</argument>
+						<argument>${bpm.deploymentId}</argument>
+						<argument>${bpm.username}</argument>
+						<argument>${bpm.password}</argument>
+					</arguments>
+				</configuration>
+			</plugin>
+		</plugins>
 	</build>
 </project>
