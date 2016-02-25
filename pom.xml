@@ -9,7 +9,7 @@
 		<maven.compiler.source>1.7</maven.compiler.source>
 		<maven.compiler.target>1.7</maven.compiler.target>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<drools.version>6.2.0.Final-redhat-6</drools.version>
+		<drools.version>6.3.0.Final-redhat-5</drools.version>
 		<json.version>1.9.9.redhat-4</json.version>
 		<bpm.host>localhost</bpm.host>
 		<bpm.port>8080</bpm.port>
